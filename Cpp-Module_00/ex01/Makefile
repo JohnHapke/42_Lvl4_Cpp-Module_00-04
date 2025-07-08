@@ -6,13 +6,14 @@
 #    By: jhapke <jhapke@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/22 14:35:22 by jhapke            #+#    #+#              #
-#    Updated: 2025/06/22 16:44:41 by jhapke           ###   ########.fr        #
+#    Updated: 2025/07/08 12:24:23 by jhapke           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= phonebook
 
-SRC= phonebook.cpp \
+SRC= PhoneBook.cpp \
+	main.cpp
 
 OBJ= $(SRC:.cpp=.o)
 
@@ -25,7 +26,7 @@ $(NAME): $(OBJ)
 		$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
-		$(CC) $(FLAGS) -c <$ -o $@
+		$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 		rm -f $(OBJ)
