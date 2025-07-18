@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhapke <jhapke@student.42.fr>              +#+  +:+       +#+        */
+/*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:04:50 by jhapke            #+#    #+#             */
-/*   Updated: 2025/07/08 12:24:58 by jhapke           ###   ########.fr       */
+/*   Updated: 2025/07/18 15:35:34 by johnhapke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 #include <string>
 #include <iomanip>
 #include <limits>
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
+#include "PhoneBook.class.hpp"
+#include "Contact.class.hpp"
