@@ -6,7 +6,7 @@
 /*   By: jhapke <jhapke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 14:34:49 by jhapke            #+#    #+#             */
-/*   Updated: 2025/06/22 16:22:17 by jhapke           ###   ########.fr       */
+/*   Updated: 2025/08/04 15:54:38 by jhapke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,14 @@
 
 int	main(int argc, char **argv)
 {
-	std::string	arg;
-
 	if (argc == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	else
 	{
 		for (int i = 1; i < argc; i++)
 		{
-			arg = argv[i];
-			for (int j = 0; arg[j] != '\0'; j++)
-				std::cout << (char)toupper(arg[j]);
+			for (int j = 0; argv[i][j] != '\0'; j++)
+				std::cout << (char)toupper(argv[i][j]);
 		}
 	}
 	std::cout << std::endl;

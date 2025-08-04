@@ -3,17 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   header.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jhapke <jhapke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:04:50 by jhapke            #+#    #+#             */
-/*   Updated: 2025/07/18 15:35:34 by johnhapke        ###   ########.fr       */
+/*   Updated: 2025/08/04 15:40:17 by jhapke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cctype>
-#include <string>
-#include <iomanip>
-#include <limits>
-#include "PhoneBook.class.hpp"
-#include "Contact.class.hpp"
+#ifndef HEADER_HPP
+# define HEADER_HPP
+# include <iostream>
+# include <cctype>
+# include <string>
+# include <iomanip>
+# include <limits>
+# include "PhoneBook.hpp"
+# include "Contact.hpp"
+#endif
