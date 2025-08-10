@@ -6,7 +6,7 @@
 /*   By: jhapke <jhapke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 16:48:15 by jhapke            #+#    #+#             */
-/*   Updated: 2025/08/04 15:41:25 by jhapke           ###   ########.fr       */
+/*   Updated: 2025/08/10 15:07:46 by jhapke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ PhoneBook::PhoneBook( void ) {
 void	PhoneBook::ft_add( void ) {
 
 	std::string	input;
-	int	i;
 
-	i = 0;
 	if (_current_index >= 8)
 		_current_index = 0;
 	if (_contact_count == 8)
@@ -33,6 +31,8 @@ void	PhoneBook::ft_add( void ) {
 	{
 		std::cout << "first name: \n";
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+			exit(1);
 		if (_contacts[_current_index].ft_set_first_name(input) == true)
 			break ;
 		std::cout << "input invalid; please retry\n";
@@ -41,6 +41,8 @@ void	PhoneBook::ft_add( void ) {
 	{
 		std::cout << "last name: \n";
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+			exit(1);
 		if (_contacts[_current_index].ft_set_last_name(input) == true)
 			break ;
 		std::cout << "input invalid; please retry\n";
@@ -49,6 +51,8 @@ void	PhoneBook::ft_add( void ) {
 	{
 		std::cout << "nickname: \n";
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+			exit(1);
 		if (_contacts[_current_index].ft_set_nickname(input) == true)
 			break ;
 		std::cout << "input invalid; please retry\n";
@@ -57,6 +61,8 @@ void	PhoneBook::ft_add( void ) {
 	{
 		std::cout << "phone number: \n";
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+			exit(1);
 		if (_contacts[_current_index].ft_set_phone_number(input) == true)
 			break ;
 		std::cout << "input invalid; please retry\n";
@@ -65,6 +71,8 @@ void	PhoneBook::ft_add( void ) {
 	{
 		std::cout << "darkest secret: \n";
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+			exit(1);
 		if (_contacts[_current_index].ft_set_darkest_secret(input) == true)
 			break ;
 		std::cout << "input invalid; please retry\n";
@@ -110,6 +118,8 @@ void	PhoneBook::ft_search( void ) {
 	{
 		std::cout << "Enter valid index of contact to display: " << std::endl;
 		std::cin >> index;
+		if (std::cin.eof())
+			exit(1);
 		if (std::cin.fail())
 		{
 			std::cin.clear();

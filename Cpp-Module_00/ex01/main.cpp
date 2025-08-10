@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jhapke <jhapke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 11:58:39 by jhapke            #+#    #+#             */
-/*   Updated: 2025/07/18 15:36:54 by johnhapke        ###   ########.fr       */
+/*   Updated: 2025/08/10 15:02:07 by jhapke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main( void ) {
 	{
 		std::cout << "Please, type in 'ADD', 'SEARCH' or 'EXIT'" << std::endl;
 		std::cin >> user_input;
+		if (std::cin.eof())
+			exit(1);
 		if (user_input== "ADD")
 			my_phonebook.ft_add();
 		if (user_input == "SEARCH")
