@@ -5,26 +5,27 @@
 #                                                     +:+ +:+         +:+      #
 #    By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/08/11 12:20:10 by johnhapke         #+#    #+#              #
-#    Updated: 2025/08/12 11:47:41 by johnhapke        ###   ########.fr        #
+#    Created: 2025/08/12 11:31:27 by johnhapke         #+#    #+#              #
+#    Updated: 2025/08/12 11:49:42 by johnhapke        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME= moar_brainz
+NAME= violence
 
 SRC= main.cpp \
-	Zombie.cpp \
-	zombieHorde.cpp
+	Weapon.cpp \
+	HumanA.cpp \
+	HumanB.cpp
 
 OBJ= $(SRC:.cpp=.o)
 
-FLAGS= -Wall -Wextra -Werror -std=c++98
-CC= c++
+FLAGS= -Wextra -Wall -Werror -std=c++98
+CC = c++
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
 	$(CC) $(FLAGS) -c $< -o $@
