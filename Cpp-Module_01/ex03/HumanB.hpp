@@ -6,7 +6,7 @@
 /*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 11:52:00 by johnhapke         #+#    #+#             */
-/*   Updated: 2025/08/13 14:52:30 by johnhapke        ###   ########.fr       */
+/*   Updated: 2025/08/14 16:43:19 by johnhapke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,13 @@
 class	HumanB {
 
 public:
-	void	attack( void );
-	void	setWeapon( Weapon weapon );
+	void	attack( void ) const;
+	void	setWeapon( Weapon& weapon );
 
-	HumanB( void );
-	~HumanB( void);
+	HumanB( std::string name );
 
-public:
-	std::string	_weapon;
+private:
+	Weapon*	_weapon;
 	std::string	_name;
 };
 
