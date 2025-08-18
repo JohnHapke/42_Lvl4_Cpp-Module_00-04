@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhapke <jhapke@student.42.fr>              +#+  +:+       +#+        */
+/*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 11:58:39 by jhapke            #+#    #+#             */
-/*   Updated: 2025/08/10 15:02:07 by jhapke           ###   ########.fr       */
+/*   Updated: 2025/08/18 16:05:36 by johnhapke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	main( void ) {
 		if (std::cin.eof())
 			exit(1);
 		if (user_input== "ADD")
-			my_phonebook.ft_add();
+			my_phonebook.addContact();
 		if (user_input == "SEARCH")
-			my_phonebook.ft_search();
+			my_phonebook.searchContact();
 		if (user_input == "EXIT")
 			break ;
 	}

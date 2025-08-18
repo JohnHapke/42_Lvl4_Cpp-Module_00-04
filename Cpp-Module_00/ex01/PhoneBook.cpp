@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhapke <jhapke@student.42.fr>              +#+  +:+       +#+        */
+/*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 16:48:15 by jhapke            #+#    #+#             */
-/*   Updated: 2025/08/10 15:07:46 by jhapke           ###   ########.fr       */
+/*   Updated: 2025/08/18 16:05:08 by johnhapke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,67 @@ PhoneBook::PhoneBook( void ) {
 	_current_index = 0;
 };
 
-void	PhoneBook::ft_add( void ) {
+namespace {
+	void	promptAndSet(InputType type, std::string msg, Contact& contacts) {
+		std::string	input;
+		bool		success;
+
+		success = false;
+		while (1)
+		{
+			std::cout << msg << std::endl;
+			std::getline(std::cin, input);
+			if (std::cin.eof())
+				exit(1);
+			switch(type)
+			{
+				case FIRST_NAME:
+					success = contacts.setFirstName(input);
+					break;
+				case LAST_NAME:
+					success = contacts.setLastName(input);
+					break;
+				case NICKNAME:
+					success = contacts.setNickname(input);
+					break;
+				case PHONE_NUMBER:
+					success = contacts.setPhoneNumber(input);
+					break;
+				case SECRET:
+					success = contacts.setDarkestSecret(input);
+					break;
+			}
+			if (success == true)
+				break;
+			std::cout << "input invalid; please retry\n";
+		}
+	}
+
+	void	controlLength(InputType type, Contact& contact) {
+		std::string	displayText;
+
+		switch(type)
+		{
+			case FIRST_NAME:
+				displayText = contact.getFirstName();
+				break;
+			case LAST_NAME:
+				displayText = contact.getLastName();
+				break;
+			case NICKNAME:
+				displayText = contact.getNickname();
+				break;
+			case PHONE_NUMBER:
+			case SECRET:
+				break;
+		}
+		if (displayText.length() > 10)
+			displayText = displayText.substr(0, 9) + ".";
+		std::cout << std::setw(10) << std::right << displayText << "|";
+	}
+}
+
+void	PhoneBook::addContact() {
 
 	std::string	input;
 
@@ -27,56 +87,11 @@ void	PhoneBook::ft_add( void ) {
 	if (_contact_count == 8)
 		std::cout << "contact number " << _current_index << " will be overwritten" << std::endl;
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	while (1)
-	{
-		std::cout << "first name: \n";
-		std::getline(std::cin, input);
-		if (std::cin.eof())
-			exit(1);
-		if (_contacts[_current_index].ft_set_first_name(input) == true)
-			break ;
-		std::cout << "input invalid; please retry\n";
-	}
-	while (1)
-	{
-		std::cout << "last name: \n";
-		std::getline(std::cin, input);
-		if (std::cin.eof())
-			exit(1);
-		if (_contacts[_current_index].ft_set_last_name(input) == true)
-			break ;
-		std::cout << "input invalid; please retry\n";
-	}
-	while (1)
-	{
-		std::cout << "nickname: \n";
-		std::getline(std::cin, input);
-		if (std::cin.eof())
-			exit(1);
-		if (_contacts[_current_index].ft_set_nickname(input) == true)
-			break ;
-		std::cout << "input invalid; please retry\n";
-	}
-	while (1)
-	{
-		std::cout << "phone number: \n";
-		std::getline(std::cin, input);
-		if (std::cin.eof())
-			exit(1);
-		if (_contacts[_current_index].ft_set_phone_number(input) == true)
-			break ;
-		std::cout << "input invalid; please retry\n";
-	}
-	while (1)
-	{
-		std::cout << "darkest secret: \n";
-		std::getline(std::cin, input);
-		if (std::cin.eof())
-			exit(1);
-		if (_contacts[_current_index].ft_set_darkest_secret(input) == true)
-			break ;
-		std::cout << "input invalid; please retry\n";
-	}
+	promptAndSet(FIRST_NAME, "first name: ", _contacts[_current_index]);
+	promptAndSet(LAST_NAME, "last name: ", _contacts[_current_index]);
+	promptAndSet(NICKNAME, "nickname: ", _contacts[_current_index]);
+	promptAndSet(PHONE_NUMBER, "phone number: ", _contacts[_current_index]);
+	promptAndSet(SECRET, "darkest secret: ", _contacts[_current_index]);
 	std::cout << "new contact added to the phonebook" << std::endl;
 	if (_contact_count < 8)
 		_contact_count++;
@@ -84,7 +99,7 @@ void	PhoneBook::ft_add( void ) {
 	return ;
 }
 
-void	PhoneBook::ft_search( void ) {
+void	PhoneBook::searchContact() {
 
 	std::string	display_text;
 	int			index;
@@ -101,18 +116,10 @@ void	PhoneBook::ft_search( void ) {
 	for (int i = 0; i < _contact_count; i++)
 	{
 		std::cout << std::setw(10) << std::right << i << "|";
-		display_text = _contacts[i].ft_get_first_name();
-		if (display_text.length() > 10)
-			display_text = display_text.substr(0, 9) + ".";
-		std::cout << std::setw(10) << std::right << display_text << "|";
-		display_text = _contacts[i].ft_get_last_name();
-		if (display_text.length() > 10)
-			display_text = display_text.substr(0, 9) + ".";
-		std::cout << std::setw(10) << std::right << display_text << "|";
-		display_text = _contacts[i].ft_get_nickname();
-		if (display_text.length() > 10)
-			display_text = display_text.substr(0, 9) + ".";
-		std::cout << std::setw(10) << std::right << display_text << "|" << std::endl;
+		controlLength(FIRST_NAME, _contacts[i]);
+		controlLength(LAST_NAME, _contacts[i]);
+		controlLength(NICKNAME, _contacts[i]);
+		std::cout << std::endl;
 	}
 	while (1)
 	{
@@ -129,10 +136,10 @@ void	PhoneBook::ft_search( void ) {
 		if (index >= 0 && index < _contact_count)
 			break ;
 	}	
-	std::cout << "first name: " << _contacts[index].ft_get_first_name() << std::endl;
-	std::cout << "last name: " << _contacts[index].ft_get_last_name() << std::endl;
-	std::cout << "nickname: " << _contacts[index].ft_get_nickname() << std::endl;
-	std::cout << "phone number: " << _contacts[index].ft_get_phone_number() << std::endl;
-	std::cout << "darkest secret: " << _contacts[index].ft_get_darkest_secret() << std::endl;
+	std::cout << "first name: " << _contacts[index].getFirstName() << std::endl;
+	std::cout << "last name: " << _contacts[index].getLastName() << std::endl;
+	std::cout << "nickname: " << _contacts[index].getNickname() << std::endl;
+	std::cout << "phone number: " << _contacts[index].getPhoneNumber() << std::endl;
+	std::cout << "darkest secret: " << _contacts[index].getDarkestSecret() << std::endl;
 	return ;
 }

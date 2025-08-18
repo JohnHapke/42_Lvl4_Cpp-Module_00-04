@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhapke <jhapke@student.42.fr>              +#+  +:+       +#+        */
+/*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 11:59:32 by jhapke            #+#    #+#             */
-/*   Updated: 2025/08/04 15:40:43 by jhapke           ###   ########.fr       */
+/*   Updated: 2025/08/18 16:04:48 by johnhapke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 # define PHONEBOOK_HPP
 # include "Contact.hpp"
 
+enum InputType {
+	FIRST_NAME,
+	LAST_NAME,
+	NICKNAME,
+	PHONE_NUMBER,
+	SECRET
+};
 class PhoneBook {
 
 public:
-	PhoneBook( void );
-	void	ft_add( void );
-	void	ft_search( void );
+	PhoneBook();
+	void	addContact();
+	void	searchContact();
 
 private:
 	Contact	_contacts[8];
