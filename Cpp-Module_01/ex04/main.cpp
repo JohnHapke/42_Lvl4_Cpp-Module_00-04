@@ -6,7 +6,7 @@
 /*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 15:31:23 by johnhapke         #+#    #+#             */
-/*   Updated: 2025/08/26 16:12:55 by johnhapke        ###   ########.fr       */
+/*   Updated: 2025/08/27 08:29:45 by johnhapke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ int	main(int argc, char **argv) {
 	std::string		line;
 	std::string		new_filename = filename + ".replace";
 
-	my_file.open(filename, std::ios::in);
+	my_file.open(filename.c_str(), std::ios::in);
 	if (!my_file)
 	{
-		std::perror("my_file error");
+		std::cerr << "error: " << filename << " can not be opened" << std::endl;
 		return (1);
 	}
 	new_file.open(new_filename.c_str(), std::ios::out);
 	if (!new_file)
 	{
-		std::perror("new_file error");
+		std::cerr << "error: " << new_filename << " can not be opened" << std::endl;
 		my_file.close();
 		return (1);
 	}
