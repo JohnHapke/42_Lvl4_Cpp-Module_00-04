@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/27 09:25:00 by johnhapke         #+#    #+#             */
-/*   Updated: 2025/08/28 08:44:33 by johnhapke        ###   ########.fr       */
+/*   Created: 2025/07/18 15:31:37 by johnhapke         #+#    #+#             */
+/*   Updated: 2025/08/28 09:27:36 by johnhapke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
-# include <iostream>
-# include <string>
-#include <cstdio>
+#include "Harl.hpp"
 
-class	Harl {
-public:
-	void	complain(std::string level);
-
-private:
-	void	debug();
-	void	info();
-	void	warning();
-	void	error();
-};
-
-#endif
+int	main(int argc, char **argv) {
+	Harl	harl;
+	if (argc < 2)
+		std::cerr << "Harl did not say anything." << std::endl;
+	for (int i = 1; i < argc; i++) {
+		harl.complain(argv[i]);
+	}
+	return (0);
+}

@@ -5,25 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/27 09:24:49 by johnhapke         #+#    #+#             */
-/*   Updated: 2025/08/28 09:05:42 by johnhapke        ###   ########.fr       */
+/*   Created: 2025/08/28 08:44:04 by johnhapke         #+#    #+#             */
+/*   Updated: 2025/08/28 09:25:49 by johnhapke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
 void	Harl::complain(std::string level) {
-	void		(Harl::*ptrFct[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	void		(Harl::*fctPtr[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string	array[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int			i = 0;
 
-	for (int i = 0; i < 4; i++) {
-		if (!level.compare(array[i]))
-		{
-			(this->*ptrFct[i])();
-			return ;
-		}
+	while (i < 4) {
+		if (level == array[i])
+			break;
+		i++;
 	}
-	std::cerr << "argument not found" << std::endl;
+	switch (i) {
+		case 0:
+			(this->*fctPtr[i])();
+			i++;
+			/*fallthru */
+		case 1:
+			(this->*fctPtr[i])();
+			i++;
+			/*fallthru */
+		case 2:
+			(this->*fctPtr[i])();
+			i++;
+			/*fallthru */
+		case 3:
+			(this->*fctPtr[i])();
+			break;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+			break;
+	}
 }
 
 void	Harl::debug() {
