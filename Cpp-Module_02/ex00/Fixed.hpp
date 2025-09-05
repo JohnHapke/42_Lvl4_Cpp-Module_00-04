@@ -6,7 +6,7 @@
 /*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 14:00:36 by johnhapke         #+#    #+#             */
-/*   Updated: 2025/09/01 15:59:13 by johnhapke        ###   ########.fr       */
+/*   Updated: 2025/09/05 10:58:11 by johnhapke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 class Fixed {
 
 public:
-	Fixed(int n);
-	Fixed&	copyFixed(Fixed arg);
-	Fixed	operator=(const Fixed& arg);
-	int		getRawBits();
+	Fixed();
+	Fixed(const Fixed& arg);
+	Fixed&	operator=(const Fixed& arg);
+	int		getRawBits() const;
 	void	setRawBits(int const raw);
 	~Fixed();
 
