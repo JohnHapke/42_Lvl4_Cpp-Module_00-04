@@ -6,7 +6,7 @@
 /*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:58:09 by johnhapke         #+#    #+#             */
-/*   Updated: 2025/09/11 22:27:33 by johnhapke        ###   ########.fr       */
+/*   Updated: 2025/09/13 14:18:21 by johnhapke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,25 @@ public:
 	Fixed(const float fval);
 
 	Fixed&	operator=(const Fixed& arg);
-	bool	operator>(const Fixed& arg);
-	bool	operator<(const Fixed& arg);
-	bool	operator>=(const Fixed& arg);
-	bool	operator<=(const Fixed& arg);
-	bool	operator==(const Fixed& arg);
-	bool	operator!=(const Fixed& arg);
-	Fixed&	operator+(const Fixed& arg);
-	Fixed&	operator-(const Fixed& arg);
-	Fixed&	operator*(const Fixed& arg);
-	Fixed&	operator/(const Fixed& arg);
+	bool	operator>(const Fixed& arg) const;
+	bool	operator<(const Fixed& arg) const;
+	bool	operator>=(const Fixed& arg) const;
+	bool	operator<=(const Fixed& arg) const;
+	bool	operator==(const Fixed& arg) const;
+	bool	operator!=(const Fixed& arg) const;
+	Fixed	operator+(const Fixed& arg) const;
+	Fixed	operator-(const Fixed& arg) const;
+	Fixed	operator*(const Fixed& arg) const;
+	Fixed	operator/(const Fixed& arg) const;
 	Fixed	operator++(int);
 	Fixed&	operator++();
 	Fixed	operator--(int);
 	Fixed&	operator--();
 
-	/*static Fixed&		min(int& fp1, int& fp2);
+	static Fixed&		min(Fixed& fp1, Fixed& fp2);
 	static const Fixed&	min(const Fixed& fp1, const Fixed& fp2);
-	static Fixed&		max(int& fp1, int& fp2);
-	static const Fixed&	max(const Fixed& fp1, const Fixed& fp2);*/
+	static Fixed&		max(Fixed& fp1, Fixed& fp2);
+	static const Fixed&	max(const Fixed& fp1, const Fixed& fp2);
 
 	int		getRawBits() const;
 	void	setRawBits(int const raw);

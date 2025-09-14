@@ -6,7 +6,7 @@
 /*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:58:02 by johnhapke         #+#    #+#             */
-/*   Updated: 2025/09/11 22:30:44 by johnhapke        ###   ########.fr       */
+/*   Updated: 2025/09/14 10:39:26 by johnhapke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,78 +48,75 @@ std::ostream&	operator<<(std::ostream& os, const Fixed& arg) {
 	return os;
 }
 
-bool	Fixed::operator>(const Fixed& arg) {
+bool	Fixed::operator>(const Fixed& arg) const {
 	if ((this->_n) > arg._n)
 		return true;
 	else
 		return false;
 }
 
-bool	Fixed::operator<(const Fixed& arg) {
+bool	Fixed::operator<(const Fixed& arg) const {
 	if ((this->_n) < arg._n)
 		return true;
 	else
 		return false;
 }
 
-bool	Fixed::operator>=(const Fixed& arg) {
+bool	Fixed::operator>=(const Fixed& arg) const {
 	if ((this->_n) >= arg._n)
 		return true;
 	else
 		return false;
  }
  
-bool	Fixed::operator<=(const Fixed& arg) {
+bool	Fixed::operator<=(const Fixed& arg) const {
 	if ((this->_n) <= arg._n)
 		return true;
 	else
 		return false;
 }
 
-bool	Fixed::operator==(const Fixed& arg) {
+bool	Fixed::operator==(const Fixed& arg) const {
 	if ((this->_n) == arg._n)
 		return true;
 	else
 		return false;
 }
 
-bool	Fixed::operator!=(const Fixed& arg) {
+bool	Fixed::operator!=(const Fixed& arg) const {
 	if ((this->_n) != arg._n)
 		return true;
 	else
 		return false;
 }
 
-Fixed&	Fixed::operator+(const Fixed& arg) {
-	Fixed&	temp = *this;
+Fixed	Fixed::operator+(const Fixed& arg) const {
+	Fixed	temp;
 
 	temp._n = this->_n + arg._n;
-	std::cout << this->_n << std::endl;
 	return temp;
 }
 
-Fixed&	Fixed::operator-(const Fixed& arg) {
-	Fixed&	temp = *this;
+Fixed	Fixed::operator-(const Fixed& arg) const {
+	Fixed	temp;
 
 	temp._n = this->_n - arg._n;
-	std::cout << this->_n << std::endl;
 	return temp;
 }
 
-Fixed&	Fixed::operator*(const Fixed& arg) {
-	Fixed&	temp = *this;
+Fixed	Fixed::operator*(const Fixed& arg) const {
+	Fixed	temp;
 
-	temp._n = this->_n * arg._n;
-	temp._n = temp._n / (1 << _bits);
+	temp._n = (this->_n * arg._n) / (1 << _bits);
 	return temp;
 }
 
-Fixed&	Fixed::operator/(const Fixed& arg) {
-	Fixed&	temp = *this;
+Fixed	Fixed::operator/(const Fixed& arg) const {
+	Fixed	temp;
 
-	temp._n = this->_n / arg._n;
-	temp._n = temp._n * (1 << _bits);
-	std::cout << this->_n << std::endl;
+	if (arg._n == 0)
+		temp._n = 0;
+	temp._n = ((float)this->_n / (float)arg._n) * (1 << _bits);
 	return temp;
 }
 
@@ -137,8 +134,11 @@ Fixed&	Fixed::operator++() {
 }
 
 Fixed	Fixed::operator--(int) {
+	Fixed temp;
+	
+	temp._n = this->_n;
 	this->_n -= 1;
-	return *this;
+	return temp;
 }
 
 Fixed&	Fixed::operator--() {
@@ -146,10 +146,38 @@ Fixed&	Fixed::operator--() {
 	return *this;
 }
 
-// member fct
+Fixed&	Fixed::min(Fixed& fp1, Fixed& fp2) {
+	if (fp1.getRawBits() < fp2.getRawBits())
+		return (fp1);
+	else
+		return (fp2);
+}
+
+const Fixed&	Fixed::min(const Fixed& fp1, const Fixed& fp2) {
+	if (fp1.getRawBits() < fp2.getRawBits())
+		return (fp1);
+	else
+		return (fp2);
+}
+
+Fixed&	Fixed::max(Fixed& fp1, Fixed& fp2) {
+	if (fp1.getRawBits() < fp2.getRawBits())
+		return (fp2);
+	else
+		return (fp1);
+}
+
+const Fixed&	Fixed::max(const Fixed& fp1, const Fixed& fp2) {
+	if (fp1.getRawBits() < fp2.getRawBits())
+		return (fp2);
+	else
+		return (fp1);
+}
+
+// further member fct
 
 int		Fixed::getRawBits() const {
-	std::cout << "getRawBits member function called" << std::endl;
+	//std::cout << "getRawBits member function called" << std::endl;
 	return _n;
 }
 
