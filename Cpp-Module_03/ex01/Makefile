@@ -5,25 +5,26 @@
 #                                                     +:+ +:+         +:+      #
 #    By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/12/22 10:36:01 by johnhapke         #+#    #+#              #
-#    Updated: 2026/01/05 16:05:33 by johnhapke        ###   ########.fr        #
+#    Created: 2026/01/05 15:04:03 by johnhapke         #+#    #+#              #
+#    Updated: 2026/01/05 16:05:53 by johnhapke        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME= ClapTrap
+NAME= ScavTrap
 
 SRC= main.cpp \
-	ClapTrap.cpp
+	ClapTrap.cpp \
+	ScavTrap.cpp
 
 OBJ= $(SRC:.cpp=.o)
 
 FLAGS= -Wall -Werror -Wextra -std=c++98
-CC= c++
+CC = c++
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+		$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
 		$(CC) $(FLAGS) -c $< -o $@
