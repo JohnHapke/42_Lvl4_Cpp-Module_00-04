@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jhapke <jhapke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:10:52 by johnhapke         #+#    #+#             */
-/*   Updated: 2026/01/05 15:57:38 by johnhapke        ###   ########.fr       */
+/*   Updated: 2026/01/07 13:37:20 by jhapke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HP
+#ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 # include <string.h>
 # include <iostream>
@@ -19,7 +19,10 @@
 class ScavTrap : public ClapTrap {
 
 public:
-	ScavTrap(std::string Input);
+	ScavTrap();
+	ScavTrap(const std::string Input);
+	ScavTrap(const ScavTrap& arg);
+	ScavTrap& operator=(const ScavTrap& arg);
 	~ScavTrap();
 
 	void	guardGate();

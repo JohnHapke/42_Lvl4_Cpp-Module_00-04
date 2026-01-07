@@ -3,24 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jhapke <jhapke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:10:27 by johnhapke         #+#    #+#             */
-/*   Updated: 2026/01/06 17:06:27 by johnhapke        ###   ########.fr       */
+/*   Updated: 2026/01/07 13:37:15 by jhapke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string Input): ClapTrap(Input) {
+ScavTrap::ScavTrap(): ClapTrap() {
+	_name = "default";
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;
-	std::cout << _name << " constructed & ready" << std::endl;
+	std::cout << _name << " constructor called (ScavTrap)" << std::endl;
+}
+
+ScavTrap::ScavTrap(const std::string Input): ClapTrap(Input) {
+	_hitPoints = 100;
+	_energyPoints = 50;
+	_attackDamage = 20;
+	std::cout << _name << " parameter constructed called (ScavTrap)" << std::endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap& arg): ClapTrap(arg) {
+	std::cout << _name << " copy constructor called (ScavTrap)" << std::endl;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap& arg) {
+	if (this == &arg)
+	{
+		std::cout << this->_name << " assignemnt constructor: same variable -> nothing to do (ScavTrap)" << std::endl;
+		return *this;
+	}
+	ClapTrap::operator=(arg);
+	std::cout << this->_name << " assignment constructor called and " << this->_name << " assigned (ScavTrap)" << std::endl;
+	return *this;
 }
 
 ScavTrap::~ScavTrap() {
-	std::cout << _name << " destructed" << std::endl;
+	std::cout << _name << " destructed (ScavTrap)" << std::endl;
 }
 
 void	ScavTrap::guardGate() {

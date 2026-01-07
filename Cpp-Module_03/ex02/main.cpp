@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jhapke <jhapke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 10:37:20 by johnhapke         #+#    #+#             */
-/*   Updated: 2026/01/06 17:22:14 by johnhapke        ###   ########.fr       */
+/*   Updated: 2026/01/07 13:31:33 by jhapke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int	main( void ) {
 	ClapTrap clap("ClapTrap");
 	ScavTrap scav("ScavTrap");
 	FragTrap frag("FragTrap");
-	
+	FragTrap fragDefault;
+
+	fragDefault = frag;
+
 	std::cout << "TEST ClapTrap: attack, damage, repairs" << std::endl;
 	clap.attack("third");
 	clap.takeDamage(5);

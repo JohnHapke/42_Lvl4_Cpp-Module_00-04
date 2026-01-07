@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jhapke <jhapke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 10:37:23 by johnhapke         #+#    #+#             */
-/*   Updated: 2026/01/07 08:52:08 by johnhapke        ###   ########.fr       */
+/*   Updated: 2026/01/07 13:37:53 by jhapke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ ClapTrap::ClapTrap(): _name("default"), _hitPoints(10), _energyPoints(10), _atta
 	std::cout << "default constructor called for " << _name << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string Input): _name(Input), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+ClapTrap::ClapTrap(const std::string Input): _name(Input), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	std::cout << "constructor with specific name input called for " << _name << std::endl;
 }
 

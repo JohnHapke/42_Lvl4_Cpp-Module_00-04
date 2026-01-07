@@ -3,17 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jhapke <jhapke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 10:37:23 by johnhapke         #+#    #+#             */
-/*   Updated: 2026/01/06 13:35:02 by johnhapke        ###   ########.fr       */
+/*   Updated: 2026/01/07 13:37:26 by jhapke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string Input): _name(Input), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-	std::cout << "constructor called for " << _name << std::endl;
+ClapTrap::ClapTrap(): _name("default"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+	std::cout << "default constructor called for " << _name << std::endl;
+}
+
+ClapTrap::ClapTrap(const std::string Input): _name(Input), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+	std::cout << "constructor with specific name input called for " << _name << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& arg): _name(arg._name), _hitPoints(arg._hitPoints), _energyPoints(arg._energyPoints), _attackDamage(arg._attackDamage) {
+	std::cout << _name << " copy constructor called" << std::endl;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& arg) {
+	if (this == &arg)
+	{
+		std::cout << "assignment operator executed for " << _name << " but same variable used -> nothing to do" << std::endl;
+		return *this;
+	}
+	this->_name = arg._name;
+	this->_hitPoints = arg._hitPoints;
+	this->_energyPoints = arg._energyPoints;
+	this->_attackDamage = arg._attackDamage;
+	std::cout << "assignment operator executed for " << _name << std::endl;
+	return *this;
 }
 
 ClapTrap::~ClapTrap() {
