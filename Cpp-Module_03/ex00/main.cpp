@@ -6,15 +6,18 @@
 /*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 10:37:20 by johnhapke         #+#    #+#             */
-/*   Updated: 2026/01/04 14:19:34 by johnhapke        ###   ########.fr       */
+/*   Updated: 2026/01/07 08:52:23 by johnhapke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 int	main( void ) {
+	ClapTrap zero;
 	ClapTrap first("firstTrap");
-	ClapTrap second("secondTrap");
+	ClapTrap second(first);
+	ClapTrap third("third");
+	third = second;
 	
 	std::cout << "TEST: attack, damage, repairs" << std::endl;
 	first.attack("third");

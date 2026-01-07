@@ -6,7 +6,7 @@
 /*   By: johnhapke <johnhapke@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 10:37:07 by johnhapke         #+#    #+#             */
-/*   Updated: 2026/01/07 08:50:54 by johnhapke        ###   ########.fr       */
+/*   Updated: 2026/01/05 16:08:40 by johnhapke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,12 @@
 class ClapTrap
 {
 	public:
-		ClapTrap();
 		ClapTrap(std::string Input);
-		ClapTrap(const ClapTrap& arg);
-		ClapTrap& operator=(const ClapTrap& arg);
 		~ClapTrap();
 		void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
-	private:
+	protected:
 		std::string	_name;
 		int			_hitPoints;
 		int			_energyPoints;
